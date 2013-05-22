@@ -1,0 +1,146 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="CourseBox_beta.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="137*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="498*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="课程查询" Style="{StaticResource PhoneTextNormalStyle}" Margin="31,0,12,0" Height="46" Foreground="#FF005DFF" FontSize="32"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" Grid.RowSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0" />
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="171*" />
+                <RowDefinition Height="506*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="273*" />
+                <ColumnDefinition Width="31*"/>
+                <ColumnDefinition Width="152*" />
+            </Grid.ColumnDefinitions>
+
+
+            <phone:LongListSelector Grid.Row="6" Name="namelist" RenderTransformOrigin="0.481,0.071" Margin="-12,0,215,0">
+                <phone:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Name="CheckBoxComplete" Text="{Binding CourseName}" Margin="10,5" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </phone:LongListSelector.ItemTemplate>
+            </phone:LongListSelector>
+
+            <phone:LongListSelector Grid.Row="6" Name="timelist" RenderTransformOrigin="0.481,0.071" Margin="65,0,0,0" HorizontalAlignment="Left" Width="80">
+                <phone:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Name="CheckBoxComplete1"  Text="{Binding CourseTime}" Margin="10,5" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </phone:LongListSelector.ItemTemplate>
+            </phone:LongListSelector>
+
+            <phone:LongListSelector Grid.Row="5" Name="placelist" RenderTransformOrigin="0.481,0.071" Margin="145,170,0,-6" HorizontalAlignment="Left" Width="83" Grid.RowSpan="2">
+                <phone:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Name="CheckBoxComplete1"  Text="{Binding CoursePlace}" Margin="10,5" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </phone:LongListSelector.ItemTemplate>
+            </phone:LongListSelector>
+
+            <phone:LongListSelector Grid.Row="6" Name="teacherlist" RenderTransformOrigin="0.481,0.071" Margin="238,0,0,5" HorizontalAlignment="Left" Width="92" Grid.ColumnSpan="3">
+                <phone:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Name="CheckBoxComplete1"  Text="{Binding Teacher}" Margin="10,5" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </phone:LongListSelector.ItemTemplate>
+            </phone:LongListSelector>
+
+            <TextBox x:Name="grade_search" HorizontalAlignment="Left" Height="73" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="142.002" Margin="118.998,2.02,0,0" RenderTransformOrigin="0.336,0.507" UseLayoutRounding="False" d:LayoutRounding="Auto" Grid.RowSpan="2">
+                <TextBox.RenderTransform>
+                    <CompositeTransform Rotation="-0.055" TranslateY="0.018"/>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Button Content="查询&#xA;" HorizontalAlignment="Left" Height="74" Margin="16,60,0,0" Grid.Row="4" VerticalAlignment="Top" Width="130" Click="search_clicked" Grid.Column="2" Grid.RowSpan="2"/>
+            <TextBox x:Name="major_search" HorizontalAlignment="Left" Height="73" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" Margin="-12,0,0,0" Grid.RowSpan="2"/>
+            <TextBox x:Name="course_search" HorizontalAlignment="Left" Height="73" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" Margin="0,4,-8,0" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Column="1"/>
+            <TextBlock HorizontalAlignment="Left" Height="32.19" Margin="9.094,-26,0,164.81" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="64.906" Grid.Row="4" RenderTransformOrigin="0.547,-0.153" UseLayoutRounding="False" d:LayoutRounding="Auto" Grid.RowSpan="2">
+            	<TextBlock.RenderTransform>
+            		<CompositeTransform Rotation="-1.596" TranslateX="-0.587" TranslateY="-0.077"/>
+            	</TextBlock.RenderTransform>
+            	<Run Text="专业"/>
+            	<Run Text=":"/>
+            </TextBlock>
+            <TextBlock x:Name="coursetime" HorizontalAlignment="Right" Height="31" Margin="0,139,108,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Grid.Row="4" Text="时间" Grid.RowSpan="2" Visibility="Collapsed"/>
+            <TextBlock x:Name="coursename" HorizontalAlignment="Left" Height="32" Margin="0,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Grid.Row="4" Text="课程" Grid.RowSpan="3" Visibility="Collapsed"/>
+            <TextBlock HorizontalAlignment="Left" Height="32" Margin="0,-23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Grid.Row="4" Grid.RowSpan="2" Grid.Column="2">
+            	<Run Text="课程"/>
+            	<Run Text=":"/>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="32" Margin="142,-23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Grid.Row="4" Grid.RowSpan="2">
+            	<Run Text="年级"/>
+            	<Run Text=":"/>
+            </TextBlock>
+            <TextBlock x:Name="teacher" HorizontalAlignment="Left" Height="31" Margin="244,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Grid.Row="4" Text="教师" Grid.ColumnSpan="3" Grid.RowSpan="2" Visibility="Collapsed"/>
+            <TextBlock x:Name="courseplace" Height="31" Margin="165,139,22,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="4" Text="地点" Grid.RowSpan="2" Visibility="Collapsed"/>
+           
+		    <phone:LongListSelector Grid.Row="6" x:Name="remarkslist" RenderTransformOrigin="0.481,0.071" Margin="31,0,0,0" HorizontalAlignment="Left" Width="115" Grid.Column="2">
+                <phone:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="CheckBoxComplete1"  Text="{Binding Remarks}" Margin="10,5" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </phone:LongListSelector.ItemTemplate>
+            </phone:LongListSelector>
+
+			            <phone:LongListSelector Grid.Row="6" x:Name="remarkslist1" RenderTransformOrigin="0.481,0.071" Margin="31,0,0,0" HorizontalAlignment="Left" Width="115" Grid.Column="2">
+                <phone:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox x:Name="remarks_tb" Checked="addremarks_clicked" Content="{Binding Remarks}" Margin="10,5" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </phone:LongListSelector.ItemTemplate>
+            </phone:LongListSelector>
+
+
+            <TextBox Grid.Row="6" x:Name="TodoInput1" Text=""  Margin="10,188,35,243" Grid.ColumnSpan="3" FontSize="21.333" Visibility="Collapsed" />
+            <TextBlock x:Name="remarks" HorizontalAlignment="Left" Height="31" Margin="31,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Grid.Row="4" Text="备注" Grid.Column="2" Grid.RowSpan="2" Visibility="Collapsed"/>
+            <TextBlock x:Name="tips" Visibility="Collapsed"  HorizontalAlignment="Left" Margin="10,104,0,0" Grid.Row="6" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.39,0.519" Height="79" Width="184">
+            	<Span Foreground="Blue" FontSize="21.333" FontFamily="Consolas">
+            		<Run Text="在下面填入需添加或修改备注后内容并勾上复选框："/>
+            	</Span>
+            </TextBlock>
+        </Grid>
+    </Grid>
+</phone:PhoneApplicationPage>
